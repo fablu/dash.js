@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="Player" lang="en">
+<head>
+    <!-- bootstrap -->
+    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="app/lib/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="app/css/main.css">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="DashController">
+<div class="container-fluid">
+    <div class="row dash-video-player col-md-6 col-md-offset-3">
+        <div id="videoContainer" ng-mousemove="onFullscreenMouseMove()" ng-mouseleave="closeSettings()">
+            <video id="videoPlayer" controls="true" ng-click="togglePlayPause()"></video>
+            <div id="videoCaption"></div>
+            <div id="settingsController" class="settings-controller" ng-show="showSettings">
+                <div id="general-settings" ng-show="showGeneralSettings">
+                    <div id="qualitySetting" class="settings-button" ng-click="openQualitySettings()">
+                        <span class="settings-name">Qualität</span>
+                        <div class="settings-link glyphicon glyphicon-chevron-right"></div>
+                        <span class="settings-value">{{activatedVideoBitrateName}}</span>
+                    </div>
+                    <div id="audioSetting" class="settings-button" ng-click="openAudioSettings()">
+                        <span class="settings-name">Audio</span>
+                        <div class="settings-link glyphicon glyphicon-chevron-right"></div>
+                        <span class="settings-value">{{activatedAudioBitrateName}}</span>
+                    </div>
+                    <div id="captionSetting" class="settings-button" ng-click="openCaptionSettings()">
+                        <span class="settings-name">Untertitel</span>
+                        <div class="settings-link glyphicon glyphicon-chevron-right"></div>
+                        <span id="captionValue" class="settings-value">{{activatedCaptionName}}</span>
+                    </div>
+                    <div id="placeholderSetting" class="settings-button" ng-click="openPlaceholderSettings()">
+                        <span class="settings-name">Platzhalter</span>
+                        <div class="settings-link glyphicon glyphicon-chevron-right"></div>
+                        <span class="settings-value">{{activatedAudioTrackName}}</span>
+                    </div>
+                </div>
+                <div id="quality-settings" ng-show="showQualitySettings">
+                    <div ng-repeat="videoBitrate in videoBitrates track by $index" class="settings-button"
+                         ng-click="activateVideoBitrate($event, $index)">
+                        <div class="settings-name">{{videoBitrate}}</div>
+                    </div>
+                </div>
+                <div id="audio-settings" ng-show="showAudioSettings">
+                    <div ng-repeat="audioBitrate in audioBitrates track by $index" class="settings-button"
+                         ng-click="activateAudioBitrate($event, $index)">
+                        <div class="settings-name">{{audioBitrate}}</div>
+                    </div>
+                </div>
+                <div id="caption-settings" ng-show="showCaptionSettings">
+                    <div ng-repeat="caption in captions track by $index" class="settings-button"
+                         ng-click="activateCaption($event, $index)">
+                        <div class="settings-name">{{caption}}</div>
+                    </div>
+                </div>
+                <div id="placeholder-settings" ng-show="showPlaceholderSettings"
+                     value="{{showPlaceholderSettings}}">
+                    <div ng-repeat="audioTrack in audioTracks track by $index" class="settings-button"
+                         ng-click="activateAudioTrack($event, $index)">
+                        <div class="settings-name">{{audioTrack}}</div>
+                    </div>
+                    {{testValue}}{{testValue2}}{{testValue3}}</div>
+            </div>
+            <div id="videoController" class="video-controller unselectable" ng-show="showController">
+                <div id="playPauseButton" class="toggle-button float-left" ng-click="togglePlayPause()">
+                    <div id="playPauseIcon" class="button-icon glyphicon glyphicon-play"></div>
+                </div>
+                <span id="videoTime" class="time-display" tabindex="2">{{time}}</span>
+
+                <!--float right-->
+                <toggle-button state-value-one="glyphicon glyphicon-fullscreen"
+                               state-value-two="glyphicon glyphicon-resize-small" class="float-right"
+                               ng-click="setFullscreen()"></toggle-button>
+
+                <!--toggle-button state-value-one="glyphicon glyphicon-subtitles"
+                               state-value-two="glyphicon glyphicon-subtitles" class="float-right"></toggle-button-->
+                <div id="settingsButton" class="toggle-button float-right" ng-click="toggleSettings()">
+                    <div id="settingsIcon" class="button-icon glyphicon glyphicon-cog"></div>
+                </div>
+                <input type="range" id="volumebar" class="volumebar" value="{{setVolume()}}" min="0" max="1"
+                       step=".01"/>
+
+                <div id="muteButton" class="toggle-button float-right" ng-click="toggleMute()">
+                    <div id="muteIcon" class="button-icon glyphicon glyphicon-volume-up"></div>
+                </div>
+                <span id="videoDuration" class="duration-display">{{duration}}</span>
+                <div class="row seekContainer">
+                    <input type="range" id="seekBar" value="0" class="seekBar" min="0" step="0.01" max="1"
+                           ng-mousemove="setSeekBar()" ng-mousedown="startSeekBarProcessing()"
+                           ng-mouseup="stopSeekBarProcessing()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- http://angularjs.org/-->
+<script src="app/lib/angular/angular.min.js"></script>
+<script src="../../dist/dash.all.min.js"></script>
+<script src="app/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="app/js/index.js"></script>
+</body>
+</html>

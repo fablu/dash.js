@@ -1,0 +1,263 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.dash-video-player {
+    align: center;
+    min-width: 540px;
+    background-color: #333333;
+}
+
+.dash-video-player video {
+    margin-top: 14px;
+    width: 100%;
+    height: 100%;
+}
+
+#videoCaption {
+    width: 100%;
+}
+
+/* thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 1px;
+    background-color: white;/*#6bffd7;*/
+}
+
+/*thumb Mozilla stylen*/
+input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 1px;
+    background-color: white;/*#6bffd7;*/
+}
+
+/*thumb IE stylen*/
+input[type="range"]::-ms-thumb {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 1px;
+    background-color: white;/*#6bffd7;*/
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    /*-webkit-tap-highlight-color: rgba(255, 255, 255, 0);*/
+    height: 14px;
+    border: none;
+    margin: 15px 5px;
+    padding: 1px 2px;
+    border-radius: 1px;
+    background: #989898;
+    outline: none; /* no focus outline */
+}
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+input[type="range"]::-moz-range-track {
+    border: inherit;
+    background: transparent;
+}
+
+input[type="range"]::-ms-track {
+    border: inherit;
+    color: transparent; /* don't drawn vertical reference line */
+    background: transparent;
+}
+
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+    background: transparent;
+}
+
+input[type="range"]::-ms-tooltip {
+    display: none;
+}
+
+input[type="range"]::-ms-fill-lower {
+    background-color: #6bffd7;
+    height: 14px;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: #6bffd7;
+    height: 14px;
+}
+
+/****/
+
+.seekContainer {
+    overflow: auto;
+    padding-right: 10px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.seekBar {
+    float: left;
+    width: 100% !important;
+}
+
+/****/
+
+.volumebar {
+    float: right;
+    width: 100px !important;
+}
+
+/****/
+
+.time-display,
+.duration-display {
+    padding: 7px;
+    color: white;
+    font-weight: normal;
+    font-size: 1.4em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.time-display {
+    float: left;
+}
+
+.duration-display {
+    float: right;
+}
+
+.toggle-btn {
+    font-size: 24px;
+    padding: 1px 1px;
+    cursor: pointer;
+    margin: 3px 8px;
+    color: rgb(255, 255, 255);
+}
+
+.toggle-button {
+    height: 40px;
+    width: 40px;
+    font-size: 24px;
+    padding: 1px 1px;
+    cursor: pointer;
+    margin: 0px 0px;
+    color: rgb(255, 255, 255);
+    text-align:center;
+}
+
+.button-icon {
+    top: 4px;
+    text-align:center;
+}
+
+/****/
+
+.video-controller {
+    min-height: 35px;
+    /*z-index: 2147483646;*/
+}
+
+.video-controller-fullscreen {
+    position: fixed;
+    /*z-index: 2147483647; hack that doesn't work anymore*/
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(51, 51, 51, 0.95) !important;
+}
+
+.caption-menu,
+.video-controller {
+    background-color: #333333;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+#videoContainer {
+    position:relative;
+}
+
+.rotated{
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+}
+
+.settings-controller{
+    position: absolute;
+    bottom: 56px;
+    right: 8px;
+    height: 160px;
+    width: 320px;
+    background-color: rgba(51, 51, 51, 0.95);
+    cursor: pointer;
+    overflow: auto;
+}
+
+.settings-button{
+    height: 40px;
+    color: white;
+    font-weight: normal;
+    font-size: 1.4em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.settings-button:hover{
+    background-color: #666666;
+}
+
+.settings-name{
+    float: left;
+    margin-top: 6px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.settings-value{
+    float: right;
+    margin-top: 6px;
+    margin-right: 2px;
+    margin-bottom: 5px;
+    color: #6bffd7;
+}
+
+.settings-link{
+    float: right;
+    margin-top: 12px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+}
+
+#captionSetting{
+}
+
+.caption-name{
+    float: left;
+    margin-top: 6px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.caption-name:hover{
+    background-color: #666666;
+}
+
+.selected{
+    background-color: #6bffd7;
+}
